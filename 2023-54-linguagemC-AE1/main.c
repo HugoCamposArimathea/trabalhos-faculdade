@@ -12,12 +12,13 @@ void main()
     float resultado;
     float montante;
     int periodo = 0;
+    int qualMes = 1;
 
     printf("Digite o valor investido\n");
     scanf("%f", &valorInvestido);
     printf("Digite a quantidade de meses do investimento\n");
     scanf("%d", &periodo);
-    printf("Digite o percentual de rendimento ao mês\n");
+    printf("Digite o percentual de rendimento ao mes\n");
     scanf("%f", &percentualRendimento);
 
     montante = valorInvestido; 
@@ -27,7 +28,8 @@ void main()
         float taxa = percentualRendimento/100;
         resultado = valorInvestido*(1+taxa);
         valorInvestido = resultado;
-        printf("O rendimento foi: R$%.2f\n", resultado);
+        printf("O rendimento no mes %d foi: R$%.2f\n", qualMes, resultado);
+        qualMes = qualMes + 1;
     }
 
     printf("\n");
