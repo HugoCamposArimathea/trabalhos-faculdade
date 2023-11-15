@@ -27,6 +27,19 @@ void validarMeta(int dia1[3][3], int dia2[3][3]){
         }
         printf("\n");
     }
+
+    printf("\n");
+
+    //Verificação de quais setores bateram a meta
+    for(i=0; i<3; i++){
+        for(j=0; j<3; j++){
+            if(matrizTotal[i][j] >= meta){
+                printf("O setor %d de %d alcancou a meta!\n", (i+1), (j+1));
+            } else if(matrizTotal[i][j] < meta) {
+                printf("O setor %d de %d nao alcancou a meta!\n", (i+1), (j+1));
+            }
+        }
+    }
 }
 
 int main() {
@@ -37,7 +50,7 @@ int main() {
     //Leitura da matriz no primeiro dia
     for(i=0; i<3; i++){
         for(j=0; j<3; j++){
-            printf("Digite o total de pessoas do setor %d de %d\n", (i+1), (j+1));
+            printf("Digite o total de pessoas do setor %d de %d no dia 1\n", (i+1), (j+1));
             scanf("%d", &dia1[i][j]);
         }
     }
@@ -47,7 +60,8 @@ int main() {
     //Leitura da matriz no segundo dia
     for(i=0; i<3; i++){
         for(j=0; j<3; j++){
-            printf("Digite o total de pessoas no setor %d de %d\n", (i+1), (j+1));
+            printf("Digite o total de pessoas no setor %d de %d no dia 2\n", (i+1), (j+1));
+            scanf("%d", &dia2[i][j]);
         }
     }
 
