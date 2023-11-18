@@ -7,7 +7,7 @@ void validarMeta(int dia1[3][3], int dia2[3][3]){
     int i, j = 0;
 
     //Leitura da meta por setor para verificação
-    printf("Digite qual e a meta por setor \n");
+    printf("Digite qual e a meta \n");
     scanf("%d", &meta);
 
     printf("\n");
@@ -23,7 +23,7 @@ void validarMeta(int dia1[3][3], int dia2[3][3]){
     printf("A matriz total e: \n");
     for(i=0; i<3; i++){
         for(j=0; j<3; j++){
-            printf("%d ", matrizTotal[i][j]);
+            printf("%d  ", matrizTotal[i][j]);
         }
         printf("\n");
     }
