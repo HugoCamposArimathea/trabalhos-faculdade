@@ -5,18 +5,40 @@
 void solicitarAtend(){
     char nome[50];
     int cpf;
+    int escolha;
 
-    printf("Iremos dar prosseguimento ao seu atendimento. Mas antes, preciso que vocÃª digite o seu nome:\n");
+    printf("Iremos dar prosseguimento ao seu atendimento. Mas antes, preciso que você digite o seu nome:\n");
     scanf("%s", &nome);
     printf("\n");
     printf("Certo %s. Agora preciso do seu CPF:\n", nome);
     scanf("%d", &cpf);
     printf("\n");
+    printf("Agora preciso que você escolha uma das opções abaixo para darmos proseguimento a sua solicitação:\n 1 - Abertura de Conta\n 2 - Caixa\n 3 - Gerente Pessoa Física\n 4 - Gerente Pessoa Jurídica\n");
+    printf("\n");
+    scanf("%d", &escolha);
+
+    switch (escolha){
+    case 1:
+        return 1;
+        break;
+    case 2:
+        return 2;
+        break;
+    case 3:
+        return 3;
+        break;
+    case 4:
+        return 4;
+        break;
+    default:
+        printf("Oops! Creio que tenha digitado algo errado.\n");
+        break;
+    }
 }
 
 int main(){
 
-    setlocale(LC_ALL, "");
+    setlocale (LC_ALL, "portuguese");
 
     int escolha;
 
@@ -36,7 +58,7 @@ int main(){
     case 4:
         break;
     default:
-        printf("Desculpe! Acho que vocÃª digitou algo errado.\n");
+        printf("Desculpe! Acho que você digitou algo errado.\n");
         break;
     }
 }
