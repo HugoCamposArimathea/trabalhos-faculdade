@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <locale.h>
 
+//Struct para registro dos atendimentos 
+struct registroAtend {
+    char nome_cliente[50];
+    int cpf_cliente[12];
+    char atend_cliente[50];
+};
+
+struct registroAtend Vet[10];
+
+//Sub-rotina para o menu principal, decidi colocar assim para poder chama-lo quando precisar
 void menuPrincipal(){
 
     int escolha;
@@ -23,27 +33,29 @@ void menuPrincipal(){
         break;
     default:
         printf("Desculpe! Acho que você digitou algo errado.\n");
+        menuPrincipal();
         break;
     }
 }
 
 void solicitarAtend(){
-    char nome[50];
-    int cpf;
     int escolha2;
     int confirmacao = 1;
+    int i = 0;
 
     while (confirmacao == 1){
 
         printf("Iremos dar prosseguimento ao seu atendimento. Mas antes, preciso que você digite o seu nome:\n");
-        scanf("%s", &nome);
+        gets(Vet[i].nome_cliente);
         printf("\n");
-        printf("Certo %s. Agora preciso do seu CPF:\n", nome);
-        scanf("%d", &cpf);
+        printf("Certo. Agora preciso do seu CPF:\n");
+        scanf(Vet[i].cpf_cliente);
         printf("\n");
         printf("Agora preciso que você escolha uma das opções abaixo para darmos proseguimento a sua solicitação:\n 1 - Abertura de Conta\n 2 - Caixa\n 3 - Gerente Pessoa Física\n 4 - Gerente Pessoa Jurídica\n 5 - Voltar ao menu principal\n");
         printf("\n");
-        scanf("%d", &escolha2);
+        scanf("%d", &escolha2, &Vet[i].atend_cliente);
+
+        i++;
 
         switch (escolha2){
         case 1:
@@ -72,6 +84,7 @@ void solicitarAtend(){
             break;
         }
     }
+    menuPrincipal();
 }
 
 int main(){
