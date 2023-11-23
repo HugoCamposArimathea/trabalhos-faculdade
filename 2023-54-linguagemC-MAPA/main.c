@@ -32,6 +32,7 @@ void menuPrincipal(){
         solicitarAtendRegist();
         break;
     case 3:
+        listagemAtend();
         break;
     case 4:
         exit("int status");
@@ -72,19 +73,19 @@ void solicitarAtend(){
 
         switch (escolha2){
         case 1:
-            printf("Você escolheu opção 1: Abertura de Conta. Muito obrigado! \n");
+            printf("Você escolheu opcao 1: Abertura de Conta. Muito obrigado! \n");
             menuPrincipal();
             break;
         case 2:
-            printf("Você escolheu opção 2: Caixa. Muito obrigado! \n");
+            printf("Você escolheu opcao 2: Caixa. Muito obrigado! \n");
             menuPrincipal();
             break;
         case 3:
-            printf("Você escolheu opção 3: Gerente de Pessoa Fisica. Muito obrigado! \n");
+            printf("Você escolheu opcao 3: Gerente de Pessoa Fisica. Muito obrigado! \n");
             menuPrincipal();
             break;
         case 4:
-            printf("Você escolheu opção 4: Gerente Pessoa Juridica. Muito obrigado! \n");
+            printf("Você escolheu opcao 4: Gerente Pessoa Juridica. Muito obrigado! \n");
             menuPrincipal();
             break;
         case 5:
@@ -103,7 +104,7 @@ void solicitarAtend(){
 //Sub-rotina para os registros de atendimento
 void solicitarAtendRegist() {
 
-    printf("\n\n");
+    printf("\n");
     printf("-------------------------------------\n");
     printf("Listagem dos atendimentos realizados:\n");
     printf("-------------------------------------\n");
@@ -128,6 +129,31 @@ void solicitarAtendRegist() {
                 printf("Tipo de Atendimento: 5 - Voltar ao Menu Principal\n");
             }
         } 
+    }
+    menuPrincipal();
+}
+
+//Sub-Rotina para filtragem de busca dos atendimentos realizados
+void listagemAtend() {
+    int termBusca;
+
+    printf("\n");
+    printf("Digite o nnumero do atendimento realizado que voce deseja filtra:\n");
+    scanf("%d", &termBusca);
+    for(int i=0;i<10;i++){
+        if(Vet[i].atend_cliente == termBusca){
+            if(Vet[i].atend_cliente == 1){
+                printf("Tipo de Atendimento: 1 - Abertura de Conta\n");
+            }else if(Vet[i].atend_cliente == 2){
+                printf("Tipo de Atendimento: 2 - Caixa\n");
+            }else if(Vet[i].atend_cliente == 3){
+                printf("Tipo de Atendimento: 3 - Gerente de Pessoa Fisica\n");
+            }else if(Vet[i].atend_cliente == 4){
+                printf("Tipo de Atendimento: 4 - Gerente de Pessoa Juridica\n");
+            }else if(Vet[i].atend_cliente == 5){
+                printf("Tipo de Atendimento: 5 - Voltar ao Menu Principal\n");
+            }
+        }
     }
     menuPrincipal();
 }
