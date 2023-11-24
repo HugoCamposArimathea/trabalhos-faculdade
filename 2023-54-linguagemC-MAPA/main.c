@@ -7,7 +7,7 @@ struct registroAtend {
     char nome_cliente[50];
     char sobrenome_cliente[50];
     char atendEscolhido[50];
-    long long int cpf_cliente;
+    char cpf_cliente[50];
     int atend_cliente; 
 };
 
@@ -63,7 +63,7 @@ void solicitarAtend(){
         printf("\n");
         printf("Certo. Agora preciso do seu CPF:\n");
         fflush(stdin);
-        scanf("%llu", &Vet[j].cpf_cliente);
+        scanf("%s", &Vet[j].cpf_cliente);
         printf("\n");
         printf("Agora preciso que voce escolha uma das opcoes abaixo para darmos proseguimento a sua solicitacao:\n 1 - Abertura de Conta\n 2 - Caixa\n 3 - Gerente Pessoa Fisica\n 4 - Gerente Pessoa Juridica\n 5 - Voltar ao menu principal\n");
         fflush(stdin);
@@ -111,12 +111,12 @@ void solicitarAtendRegist() {
 
     for (int i = 0; i < 10; i++)
     {
-        if(Vet[i].cpf_cliente>0){
+        if(Vet[i].atend_cliente>0){
             printf("\n");
             printf("-------------------------------------\n");
             printf("Nome: %s", Vet[i].nome_cliente);
             printf(" %s\n", Vet[i].sobrenome_cliente);
-            printf("CPF: %llu\n", Vet[i].cpf_cliente);
+            printf("CPF: %s\n", Vet[i].cpf_cliente);
             if(Vet[i].atend_cliente == 1){
                 printf("Tipo de Atendimento: 1 - Abertura de Conta\n");
             }else if(Vet[i].atend_cliente == 2){
@@ -125,8 +125,6 @@ void solicitarAtendRegist() {
                 printf("Tipo de Atendimento: 3 - Gerente de Pessoa Fisica\n");
             }else if(Vet[i].atend_cliente == 4){
                 printf("Tipo de Atendimento: 4 - Gerente de Pessoa Juridica\n");
-            }else if(Vet[i].atend_cliente == 5){
-                printf("Tipo de Atendimento: 5 - Voltar ao Menu Principal\n");
             }
         } 
     }
@@ -143,15 +141,33 @@ void listagemAtend() {
     for(int i=0;i<10;i++){
         if(Vet[i].atend_cliente == termBusca){
             if(Vet[i].atend_cliente == 1){
+                printf("\n");
+                printf("-------------------------------------\n");
+                printf("Nome: %s", Vet[i].nome_cliente);
+                printf(" %s\n", Vet[i].sobrenome_cliente);
+                printf("CPF: %s\n", Vet[i].cpf_cliente);
                 printf("Tipo de Atendimento: 1 - Abertura de Conta\n");
             }else if(Vet[i].atend_cliente == 2){
+                printf("\n");
+                printf("-------------------------------------\n");
+                printf("Nome: %s", Vet[i].nome_cliente);
+                printf(" %s\n", Vet[i].sobrenome_cliente);
+                printf("CPF: %s\n", Vet[i].cpf_cliente);
                 printf("Tipo de Atendimento: 2 - Caixa\n");
             }else if(Vet[i].atend_cliente == 3){
+                printf("\n");
+                printf("-------------------------------------\n");
+                printf("Nome: %s", Vet[i].nome_cliente);
+                printf(" %s\n", Vet[i].sobrenome_cliente);
+                printf("CPF: %s\n", Vet[i].cpf_cliente);
                 printf("Tipo de Atendimento: 3 - Gerente de Pessoa Fisica\n");
             }else if(Vet[i].atend_cliente == 4){
+                printf("\n");
+                printf("-------------------------------------\n");
+                printf("Nome: %s", Vet[i].nome_cliente);
+                printf(" %s\n", Vet[i].sobrenome_cliente);
+                printf("CPF: %s\n", Vet[i].cpf_cliente);
                 printf("Tipo de Atendimento: 4 - Gerente de Pessoa Juridica\n");
-            }else if(Vet[i].atend_cliente == 5){
-                printf("Tipo de Atendimento: 5 - Voltar ao Menu Principal\n");
             }
         }
     }
