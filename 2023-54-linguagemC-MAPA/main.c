@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <ctype.h>
+#include <string.h>
 
 //Struct para registro dos atendimentos 
 struct registroAtend {
@@ -9,13 +10,14 @@ struct registroAtend {
     char sobrenome_cliente[50];
     char atendEscolhido[50];
     char cpf_cliente[50];
+    char cpf_formatado[15];
     int atend_cliente; 
 };
 
 struct registroAtend Vet[10];
 
 //Sub-rotina para o menu principal, decidi colocar assim para poder chama-lo quando precisar
-void menuPrincipal(){
+int menuPrincipal(){
 
     int escolha;
 
@@ -47,7 +49,7 @@ void menuPrincipal(){
 
 //Sub-rotina para a escolha um do menu principal - Solicitar Atendimento
 int j = -1;
-void solicitarAtend(){
+int solicitarAtend(){
     int escolha2;
     int confirmacao = 1;
 
@@ -56,15 +58,15 @@ void solicitarAtend(){
         j++;
         printf("Iremos dar prosseguimento ao seu atendimento. Mas antes, preciso que você digite o seu nome:\n");
         fflush(stdin);
-        scanf("%s", &Vet[j].nome_cliente);
+        scanf("%s", Vet[j].nome_cliente);
         printf("\n");
         printf("Agora o seu sobrenome:\n");
         fflush(stdin);
-        scanf("%s", &Vet[j].sobrenome_cliente);
+        scanf("%s", Vet[j].sobrenome_cliente);
         printf("\n");
         printf("Certo. Agora preciso do seu CPF: (Formato: 000.000.000-00)\n");
         fflush(stdin);
-        scanf("%s", &Vet[j].cpf_cliente);
+        scanf("%s", Vet[j].cpf_cliente);
         printf("\n");
         printf("Agora preciso que você escolha uma das opcoes abaixo para darmos proseguimento a sua solicitação:\n 1 - Abertura de Conta\n 2 - Caixa\n 3 - Gerente Pessoa Física\n 4 - Gerente Pessoa Jurídica\n 5 - Voltar ao menu principal\n");
         fflush(stdin);
@@ -90,7 +92,10 @@ void solicitarAtend(){
             }
         }
 
-        switch (escolha2){
+        sprintf(Vet[j].cpf_cliente, "%3s.%3s.%3s-%2s", &Vet[j].cpf_cliente[0], &Vet[j].cpf_cliente[3], &Vet[j].cpf_cliente[6], &Vet[j].cpf_cliente[9]);
+
+
+        switch(escolha2){
         case 1:
             printf("Você escolheu opção 1: Abertura de Conta. Muito obrigado! \n");
             menuPrincipal();
@@ -120,8 +125,8 @@ void solicitarAtend(){
     menuPrincipal();
 }
 
-//Sub-rotina para os registros de atendimento
-void solicitarAtendRegist() {
+//Sub-rotina para listagem dos registros de atendimento
+int solicitarAtendRegist() {
 
     printf("\n");
     printf("-------------------------------------\n");
@@ -136,7 +141,7 @@ void solicitarAtendRegist() {
             printf("-------------------------------------\n");
             printf("Nome: %s", Vet[i].nome_cliente);
             printf(" %s\n", Vet[i].sobrenome_cliente);
-            printf("CPF: %s\n", Vet[i].cpf_cliente);
+            printf("CPF: %s\n", Vet[i].cpf_formatado);
             if(Vet[i].atend_cliente == 1){
                 printf("Tipo de Atendimento: 1 - Abertura de Conta\n");
             }else if(Vet[i].atend_cliente == 2){
@@ -152,7 +157,7 @@ void solicitarAtendRegist() {
 }
 
 //Sub-Rotina para filtragem de busca dos atendimentos realizados
-void listagemAtend() {
+int listagemAtend() {
     int termBusca;
 
     printf("\n");
