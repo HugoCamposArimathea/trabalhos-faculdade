@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <ctype.h>
 
 //Struct para registro dos atendimentos 
 struct registroAtend {
@@ -38,7 +39,7 @@ void menuPrincipal(){
         exit("int status");
         break;
     default:
-        printf("Desculpe! Acho que voce digitou algo errado.\n");
+        printf("Desculpe! Acho que você digitou algo errado.\n");
         menuPrincipal();
         break;
     }
@@ -53,7 +54,7 @@ void solicitarAtend(){
     while (confirmacao == 1){
 
         j++;
-        printf("Iremos dar prosseguimento ao seu atendimento. Mas antes, preciso que voce digite o seu nome:\n");
+        printf("Iremos dar prosseguimento ao seu atendimento. Mas antes, preciso que você digite o seu nome:\n");
         fflush(stdin);
         scanf("%s", &Vet[j].nome_cliente);
         printf("\n");
@@ -61,31 +62,49 @@ void solicitarAtend(){
         fflush(stdin);
         scanf("%s", &Vet[j].sobrenome_cliente);
         printf("\n");
-        printf("Certo. Agora preciso do seu CPF:\n");
+        printf("Certo. Agora preciso do seu CPF: (Formato: 000.000.000-00)\n");
         fflush(stdin);
         scanf("%s", &Vet[j].cpf_cliente);
         printf("\n");
-        printf("Agora preciso que voce escolha uma das opcoes abaixo para darmos proseguimento a sua solicitacao:\n 1 - Abertura de Conta\n 2 - Caixa\n 3 - Gerente Pessoa Fisica\n 4 - Gerente Pessoa Juridica\n 5 - Voltar ao menu principal\n");
+        printf("Agora preciso que você escolha uma das opcoes abaixo para darmos proseguimento a sua solicitação:\n 1 - Abertura de Conta\n 2 - Caixa\n 3 - Gerente Pessoa Física\n 4 - Gerente Pessoa Jurídica\n 5 - Voltar ao menu principal\n");
         fflush(stdin);
         printf("\n");
         scanf("%d", &escolha2);
         Vet[j].atend_cliente = escolha2;
+        
+        //Formata nome do cliente para que sempre fique com a primeira letra maiúscula
+        for(int i=0; i<strlen(Vet[j].nome_cliente)+1;i++){
+            if (i == 0 || Vet[i].nome_cliente[i - 1] == ' ') {
+                Vet[i].nome_cliente[i] = toupper(Vet[i].nome_cliente[i]);
+            } else {
+                Vet[i].nome_cliente[i] = Vet[i].nome_cliente[i];
+            }
+        }
+         
+        //Formata sobrenome do cliente para que sempre fique com a primeira letra maiúscula
+        for(int i=0; i<strlen(Vet[j].sobrenome_cliente)+1;i++){
+            if (i == 0 || Vet[i].sobrenome_cliente[i - 1] == ' ') {
+                Vet[i].sobrenome_cliente[i] = toupper(Vet[i].sobrenome_cliente[i]);
+            } else {
+                Vet[i].sobrenome_cliente[i] = Vet[i].sobrenome_cliente[i];
+            }
+        }
 
         switch (escolha2){
         case 1:
-            printf("Você escolheu opcao 1: Abertura de Conta. Muito obrigado! \n");
+            printf("Você escolheu opção 1: Abertura de Conta. Muito obrigado! \n");
             menuPrincipal();
             break;
         case 2:
-            printf("Você escolheu opcao 2: Caixa. Muito obrigado! \n");
+            printf("Você escolheu opção 2: Caixa. Muito obrigado! \n");
             menuPrincipal();
             break;
         case 3:
-            printf("Você escolheu opcao 3: Gerente de Pessoa Fisica. Muito obrigado! \n");
+            printf("Você escolheu opção 3: Gerente de Pessoa Física. Muito obrigado! \n");
             menuPrincipal();
             break;
         case 4:
-            printf("Você escolheu opcao 4: Gerente Pessoa Juridica. Muito obrigado! \n");
+            printf("Você escolheu opção 4: Gerente Pessoa Jurídica. Muito obrigado! \n");
             menuPrincipal();
             break;
         case 5:
@@ -93,7 +112,7 @@ void solicitarAtend(){
         default:
             printf("Oops! Creio que tenha digitado algo errado.\n");
             printf("\n");
-            printf("Voce deseja voltar ao menu para mais algum atendimento? (1-Sim/2-Nao)\n");
+            printf("Você deseja voltar ao menu para mais algum atendimento? (1-Sim/2-Nao)\n");
             scanf("%d", &confirmacao);
             break;
         }
@@ -114,6 +133,7 @@ void solicitarAtendRegist() {
         if(Vet[i].atend_cliente>0){
             printf("\n");
             printf("-------------------------------------\n");
+            printf("-------------------------------------\n");
             printf("Nome: %s", Vet[i].nome_cliente);
             printf(" %s\n", Vet[i].sobrenome_cliente);
             printf("CPF: %s\n", Vet[i].cpf_cliente);
@@ -122,9 +142,9 @@ void solicitarAtendRegist() {
             }else if(Vet[i].atend_cliente == 2){
                 printf("Tipo de Atendimento: 2 - Caixa\n");
             }else if(Vet[i].atend_cliente == 3){
-                printf("Tipo de Atendimento: 3 - Gerente de Pessoa Fisica\n");
+                printf("Tipo de Atendimento: 3 - Gerente de Pessoa Física\n");
             }else if(Vet[i].atend_cliente == 4){
-                printf("Tipo de Atendimento: 4 - Gerente de Pessoa Juridica\n");
+                printf("Tipo de Atendimento: 4 - Gerente de Pessoa Jurídica\n");
             }
         } 
     }
@@ -136,7 +156,7 @@ void listagemAtend() {
     int termBusca;
 
     printf("\n");
-    printf("Digite o nnumero do atendimento realizado que voce deseja filtra:\n");
+    printf("Digite o número do atendimento realizado que você deseja filtrar:\n");
     scanf("%d", &termBusca);
     for(int i=0;i<10;i++){
         if(Vet[i].atend_cliente == termBusca){
@@ -160,14 +180,14 @@ void listagemAtend() {
                 printf("Nome: %s", Vet[i].nome_cliente);
                 printf(" %s\n", Vet[i].sobrenome_cliente);
                 printf("CPF: %s\n", Vet[i].cpf_cliente);
-                printf("Tipo de Atendimento: 3 - Gerente de Pessoa Fisica\n");
+                printf("Tipo de Atendimento: 3 - Gerente de Pessoa Física\n");
             }else if(Vet[i].atend_cliente == 4){
                 printf("\n");
                 printf("-------------------------------------\n");
                 printf("Nome: %s", Vet[i].nome_cliente);
                 printf(" %s\n", Vet[i].sobrenome_cliente);
                 printf("CPF: %s\n", Vet[i].cpf_cliente);
-                printf("Tipo de Atendimento: 4 - Gerente de Pessoa Juridica\n");
+                printf("Tipo de Atendimento: 4 - Gerente de Pessoa Jurídica\n");
             }
         }
     }
