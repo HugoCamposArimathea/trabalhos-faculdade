@@ -9,7 +9,7 @@ struct registroAtend {
     char nome_cliente[50];
     char sobrenome_cliente[50];
     char atendEscolhido[50];
-    char cpf_cliente[50];
+    char cpf_cliente[15];
     char cpf_formatado[15];
     int atend_cliente; 
 };
@@ -47,7 +47,7 @@ int menuPrincipal(){
     }
 }
 
-//Sub-rotina para a escolha um do menu principal - Solicitar Atendimento
+//Sub-rotina para a escolha um do menu principal - Solicitar Atendimento, usarei como variável de controle aqui dentro o j, pois assim não interfere em outras sub-rotinas
 int j = -1;
 int solicitarAtend(){
     int escolha2;
@@ -68,7 +68,11 @@ int solicitarAtend(){
         printf("Certo. Agora preciso do seu CPF: (Formato: 000.000.000-00)\n");
         fflush(stdin);
         scanf("%s", Vet[j].cpf_cliente);
-        if(strlen(Vet[j].cpf_cliente)!=11){
+        //Verificação de quantidade de números do CPF
+        if(strlen(Vet[j].cpf_cliente)==11){
+            sprintf(Vet[j].cpf_formatado, "%s.%s.%s-%s", &Vet[j].cpf_cliente[0], &Vet[j].cpf_cliente[3], &Vet[j].cpf_cliente[6], &Vet[j].cpf_cliente[9]);
+            printf("CPF: %s\n", Vet[j].cpf_formatado);
+        } else {
             printf("\n");
             printf("Desculpe, mas creio que tenha digitado números a mais ou números a menos. Por favor verifique!\n");
             printf("Digite seu CPF novamente:\n");
@@ -146,7 +150,7 @@ int solicitarAtendRegist() {
             printf("-------------------------------------\n");
             printf("Nome: %s", Vet[i].nome_cliente);
             printf(" %s\n", Vet[i].sobrenome_cliente);
-            printf("CPF: %s\n", Vet[i].cpf_cliente);
+            printf("CPF: %s\n", Vet[i].cpf_formatado);
             if(Vet[i].atend_cliente == 1){
                 printf("Tipo de Atendimento: 1 - Abertura de Conta\n");
             }else if(Vet[i].atend_cliente == 2){
