@@ -10,7 +10,6 @@ struct registroAtend {
     char sobrenome_cliente[50];
     char atendEscolhido[50];
     char cpf_cliente[15];
-    char cpf_formatado[15];
     int atend_cliente; 
 };
 
@@ -65,14 +64,11 @@ int solicitarAtend(){
         fflush(stdin);
         scanf("%s", Vet[j].sobrenome_cliente);
         printf("\n");
-        printf("Certo. Agora preciso do seu CPF: (Formato: 000.000.000-00)\n");
+        printf("Certo. Agora preciso do seu CPF:\n");
         fflush(stdin);
         scanf("%s", Vet[j].cpf_cliente);
         //Verificação de quantidade de números do CPF
-        if(strlen(Vet[j].cpf_cliente)==11){
-            sprintf(Vet[j].cpf_formatado, "%s.%s.%s-%s", &Vet[j].cpf_cliente[0], &Vet[j].cpf_cliente[3], &Vet[j].cpf_cliente[6], &Vet[j].cpf_cliente[9]);
-            printf("CPF: %s\n", Vet[j].cpf_formatado);
-        } else {
+        if(strlen(Vet[j].cpf_cliente)!=11){
             printf("\n");
             printf("Desculpe, mas creio que tenha digitado números a mais ou números a menos. Por favor verifique!\n");
             printf("Digite seu CPF novamente:\n");
@@ -150,7 +146,7 @@ int solicitarAtendRegist() {
             printf("-------------------------------------\n");
             printf("Nome: %s", Vet[i].nome_cliente);
             printf(" %s\n", Vet[i].sobrenome_cliente);
-            printf("CPF: %s\n", Vet[i].cpf_formatado);
+            printf("CPF: %.3s.%.3s.%.3s-%.2s\n", Vet[i].cpf_cliente, Vet[i].cpf_cliente + 3, Vet[i].cpf_cliente + 6, Vet[i].cpf_cliente + 9);
             if(Vet[i].atend_cliente == 1){
                 printf("Tipo de Atendimento: 1 - Abertura de Conta\n");
             }else if(Vet[i].atend_cliente == 2){
@@ -174,34 +170,19 @@ int listagemAtend() {
     scanf("%d", &termBusca);
     for(int i=0;i<10;i++){
         if(Vet[i].atend_cliente == termBusca){
-            if(Vet[i].atend_cliente == 1){
-                printf("\n");
-                printf("-------------------------------------\n");
-                printf("Nome: %s", Vet[i].nome_cliente);
-                printf(" %s\n", Vet[i].sobrenome_cliente);
-                printf("CPF: %s\n", Vet[i].cpf_cliente);
+            printf("\n");
+            printf("-------------------------------------\n");
+            printf("Nome: %s", Vet[i].nome_cliente);
+            printf(" %s\n", Vet[i].sobrenome_cliente);
+            printf("CPF: %.3s.%.3s.%.3s-%.2s\n", Vet[i].cpf_cliente, Vet[i].cpf_cliente + 3, Vet[i].cpf_cliente + 6, Vet[i].cpf_cliente + 9);
+            if(termBusca==1){
                 printf("Tipo de Atendimento: 1 - Abertura de Conta\n");
-            }else if(Vet[i].atend_cliente == 2){
-                printf("\n");
-                printf("-------------------------------------\n");
-                printf("Nome: %s", Vet[i].nome_cliente);
-                printf(" %s\n", Vet[i].sobrenome_cliente);
-                printf("CPF: %s\n", Vet[i].cpf_cliente);
+            }else if(termBusca==2){
                 printf("Tipo de Atendimento: 2 - Caixa\n");
-            }else if(Vet[i].atend_cliente == 3){
-                printf("\n");
-                printf("-------------------------------------\n");
-                printf("Nome: %s", Vet[i].nome_cliente);
-                printf(" %s\n", Vet[i].sobrenome_cliente);
-                printf("CPF: %s\n", Vet[i].cpf_cliente);
-                printf("Tipo de Atendimento: 3 - Gerente de Pessoa Física\n");
-            }else if(Vet[i].atend_cliente == 4){
-                printf("\n");
-                printf("-------------------------------------\n");
-                printf("Nome: %s", Vet[i].nome_cliente);
-                printf(" %s\n", Vet[i].sobrenome_cliente);
-                printf("CPF: %s\n", Vet[i].cpf_cliente);
-                printf("Tipo de Atendimento: 4 - Gerente de Pessoa Jurídica\n");
+            }else if(termBusca==3){
+                printf("Tipo de Atendimento: 3 - Gerente Pessoa Física\n");
+            }else if(termBusca==4){
+                printf("Tipo de Atendimento: 4 - Gerente Pessoa Jurídica\n");
             }
         }
     }
