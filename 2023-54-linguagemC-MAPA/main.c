@@ -56,6 +56,7 @@ int solicitarAtend(){
     while (confirmacao == 1){
 
         j++;
+        printf("\n");
         printf("Iremos dar prosseguimento ao seu atendimento. Mas antes, preciso que você digite o seu nome:\n");
         fflush(stdin);
         scanf("%s", Vet[j].nome_cliente);
@@ -67,6 +68,13 @@ int solicitarAtend(){
         printf("Certo. Agora preciso do seu CPF: (Formato: 000.000.000-00)\n");
         fflush(stdin);
         scanf("%s", Vet[j].cpf_cliente);
+        if(strlen(Vet[j].cpf_cliente)!=11){
+            printf("\n");
+            printf("Desculpe, mas creio que tenha digitado números a mais ou números a menos. Por favor verifique!\n");
+            printf("Digite seu CPF novamente:\n");
+            fflush(stdin);
+            scanf("%s", Vet[j].cpf_cliente);
+        }
         printf("\n");
         printf("Agora preciso que você escolha uma das opcoes abaixo para darmos proseguimento a sua solicitação:\n 1 - Abertura de Conta\n 2 - Caixa\n 3 - Gerente Pessoa Física\n 4 - Gerente Pessoa Jurídica\n 5 - Voltar ao menu principal\n");
         fflush(stdin);
@@ -76,24 +84,21 @@ int solicitarAtend(){
         
         //Formata nome do cliente para que sempre fique com a primeira letra maiúscula
         for(int i=0; i<strlen(Vet[j].nome_cliente)+1;i++){
-            if (i == 0 || Vet[i].nome_cliente[i - 1] == ' ') {
-                Vet[i].nome_cliente[i] = toupper(Vet[i].nome_cliente[i]);
+            if (i == 0 || Vet[j].nome_cliente[i - 1] == ' ') {
+                Vet[j].nome_cliente[i] = toupper(Vet[j].nome_cliente[i]);
             } else {
-                Vet[i].nome_cliente[i] = Vet[i].nome_cliente[i];
+                Vet[j].nome_cliente[i] = Vet[j].nome_cliente[i];
             }
         }
          
         //Formata sobrenome do cliente para que sempre fique com a primeira letra maiúscula
         for(int i=0; i<strlen(Vet[j].sobrenome_cliente)+1;i++){
-            if (i == 0 || Vet[i].sobrenome_cliente[i - 1] == ' ') {
-                Vet[i].sobrenome_cliente[i] = toupper(Vet[i].sobrenome_cliente[i]);
+            if (i == 0 || Vet[j].sobrenome_cliente[i - 1] == ' ') {
+                Vet[j].sobrenome_cliente[i] = toupper(Vet[j].sobrenome_cliente[i]);
             } else {
-                Vet[i].sobrenome_cliente[i] = Vet[i].sobrenome_cliente[i];
+                Vet[j].sobrenome_cliente[i] = Vet[j].sobrenome_cliente[i];
             }
         }
-
-        sprintf(Vet[j].cpf_cliente, "%3s.%3s.%3s-%2s", &Vet[j].cpf_cliente[0], &Vet[j].cpf_cliente[3], &Vet[j].cpf_cliente[6], &Vet[j].cpf_cliente[9]);
-
 
         switch(escolha2){
         case 1:
@@ -141,7 +146,7 @@ int solicitarAtendRegist() {
             printf("-------------------------------------\n");
             printf("Nome: %s", Vet[i].nome_cliente);
             printf(" %s\n", Vet[i].sobrenome_cliente);
-            printf("CPF: %s\n", Vet[i].cpf_formatado);
+            printf("CPF: %s\n", Vet[i].cpf_cliente);
             if(Vet[i].atend_cliente == 1){
                 printf("Tipo de Atendimento: 1 - Abertura de Conta\n");
             }else if(Vet[i].atend_cliente == 2){
