@@ -9,9 +9,18 @@
     
 }
 
+:root {
+    --rose: #F2E7DC;
+    --azul-claro: #A9D9D0;
+    --verde: #038C7F;
+    --verde-azulado: #027373;
+    --preto: #0D0D0D;
+}
+
 .pagina {
     width: 100%;
     height: 100%;
+    background-color: var(--azul-claro);
 }
 
 .cabecalho {
@@ -19,19 +28,20 @@
     flex-direction: column;
     width: 100%;
     height: 30%;
-    margin-bottom: 5%;
+    background-color: var(--verde-azulado);
+    padding: 2%;
 }
 
 .logo{ 
     width: 100%;
     height: 50%;
-    padding: 3%;
-    background-color: antiquewhite;
+    padding: 3% 3% 5% 3%;
     text-align: center;
 }
 
 h1 {
     font-size: 2.5rem;
+    sh
 }
 
 .menu {
@@ -53,20 +63,23 @@ button {
     width: 100%;
     height: 100%;
     padding: 3% 0;
+    font-weight: bold;
+    background-color: var(--rose);
+    border-radius: 3%;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem var(--preto);
 }
 
 .corpo {
-    padding: 5% 2%;
+    padding: 5% 2% 2% 2%;
     text-align: center;
+    padding-bottom: 100px;
 }
 
 .rodape {
     width: 100%;
     text-align: center;
     bottom: 0%;
-    position: absolute;
     font-style: italic;
     font-weight: bold;
     font-size: 0.8rem;
 }
-
