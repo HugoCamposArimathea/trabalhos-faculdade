@@ -73,6 +73,12 @@ h1 {
     text-align: center;
 }
 
+.corpo {
+    padding: 5% 2% 2% 2%;
+    text-align: center;
+    padding-bottom: 100px;
+}
+
 .rodape {
     width: 100%;
     text-align: center;
@@ -96,19 +102,13 @@ button {
     box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem var(--preto);
 }
 
-.corpo {
-    padding: 5% 2% 2% 2%;
-    text-align: center;
-    padding-bottom: 100px;
-}
-
 
 /*Configurações da página de loggin*/
 .corpologgin {
     width: 100%;
 }
 
-.formulario {
+.formulario_loggin {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,8 +123,39 @@ button {
 #emailloggin, #senhaloggin {
     border-radius: 5px;
     box-shadow: 1px 1px 1px 1px var(--preto);
+    
 }
 
 .enviarloggin {
     margin: 2%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px var(--preto);
+    font-weight: bold;
+}
+
+
+/*Configurações da página de cadastro*/
+.formulario_cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.div_nomecadastro, .div_emailcadastro, .div_cepcadastro, .div_senhacadastro {
+    margin: 2%;
+    font-weight: bold;
+}
+
+#nomecadastro, #emailcadastro, #cepcadastro, #senhacadastro {
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px var(--preto);
+}
+
+.enviarcadastro {
+    margin: 2%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px var(--preto);
+    font-weight: bold;
+    
 }
