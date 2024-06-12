@@ -6,7 +6,8 @@
     <title>Persa LTDA</title> 
     <script src="scripts/jquery-3.7.1.js.js"></script>
     <script src="scripts/jquery.validate.min.js"></script>
-    <script src="scripts/scriptindex.js"></script>
+    <script src="scripts/localization/messages_pt_BR.js"></script>
+    <script src="scripts/scriptcadastro.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" href="imagens/software-development.png" type="image/x-icon">
 </head>
@@ -29,19 +30,19 @@
         </nav>
     </header>
     <main class="corpo">
-        <form action="" class="formulario_cadastro">
+        <form class="formulario_cadastro">
             <h2>Faça seu cadastro</h2>
             <div class="div_nomecadastro">
-                <label for="">Digite seu nome: <input type="text" name="nomecadastro" id="nomecadastro"></label>
+                <label for=""><input type="text" name="nomecadastro" id="nomecadastro" placeholder="Digite seu nome"></label>
             </div>
             <div class="div_emailcadastro">
-                <label for="">Digite seu e-mail: <input type="email" name="emailcadastro" id="emailcadastro"></label>
+                <label for=""><input type="email" name="emailcadastro" id="emailcadastro" placeholder="Digite seu e-mail"></label>
             </div>
             <div class="div_cepcadastro">
-                <label for="">Digite o seu CEP: <input type="text" name="cepcadastro" id="cepcadastro"></label>
+                <label for=""><input type="text" name="cepcadastro" id="cepcadastro" placeholder="Digite o seu CEP"></label>
             </div>
             <div class="div_senhacadastro">
-                <label for="">Digite sua senha: <input type="password" name="senhacadastro" id="senhacadastro"></label>
+                <label for=""><input type="password" name="senhacadastro" id="senhacadastro" placeholder="Digite sua senha"></label>
             </div>
             <label for=""><input type="submit" value="Enviar" class="enviarcadastro"></label>
         </form>
