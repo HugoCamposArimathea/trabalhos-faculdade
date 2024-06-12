@@ -20,7 +20,6 @@ $(document).ready(function(){
         rules:{
             emailloggin:{
                 required: true,
-                emailloggin:true
             },
             senhaloggin:{
                 required: true
@@ -28,7 +27,7 @@ $(document).ready(function(){
         },
 
         submitHandler: function(form){
-            alert("Sucesso!");
+            alert("Tudo certo por aqui!");
         }
     });
 })

@@ -86,7 +86,7 @@ h1 {
     font-style: italic;
     font-weight: bold;
     font-size: 0.8rem;
-    padding-top: 1000px;
+    padding-top: 100px;
 }
 
 
@@ -142,12 +142,12 @@ button {
     margin-top: 10%;
 }
 
-.div_nomecadastro, .div_emailcadastro, .div_cepcadastro, .div_senhacadastro {
+.div_nomecadastro, .div_emailcadastro, .div_cepcadastro, .div_senhacadastro, .div_confirmsenhacadastro {
     margin: 2%;
     font-weight: bold;
 }
 
-#nomecadastro, #emailcadastro, #cepcadastro, #senhacadastro {
+#nomecadastro, #emailcadastro, #cepcadastro, #senhacadastro, #confirmsenhacadastro{
     border-radius: 5px;
     box-shadow: 1px 1px 1px 1px var(--preto);
 }

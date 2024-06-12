@@ -16,7 +16,7 @@ $(document).ready(function(){
 
 //Código de validação para campos de cadastro
 $(document).ready(function(){
-    $('.formulario_cadastro').validate({
+    $('.formulario_cadastro').validate({ 
         rules:{
             nomecadastro:{
                 required: true,
@@ -24,21 +24,24 @@ $(document).ready(function(){
             },
             emailcadastro:{
                 required: true,
-                emailcadastro:true
             },
             cepcadastro:{
                 required: true,
-                cepcadastro:true,
-                minlength: 9,
-                maxlength: 9
+                number:true,
+                minlength: 8
             },
             senhacadastro:{
                 required:true
+            },
+            confirmsenhacadastro:{
+                required: true,
+                equalTo: "#senhacadastro"
             }
         },
-        
+
         submitHandler: function(form){
-            alert("Cadastro feito com sucesso!")
+            alert("Cadastro feito com sucesso!");
         }
     });
 })
+
