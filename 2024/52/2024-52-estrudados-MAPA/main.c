@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_SIZE 200
+#define MAX_SIZE 100
 
 struct Pilha {
     char itens[MAX_SIZE];
@@ -17,37 +17,19 @@ int vazia(struct Pilha *p) {
 }
 
 void push(struct Pilha *p, char item) {
-    if(p->topo == MAX_SIZE -1) {
-        printf("\nPilha cheia. Por favor, desempilhe para poder adicionar.\n");
-        return;
-    } else {
-        p->topo++;
-        p->itens[p->topo] = item;
-    }
-    
+     ...
 }
 
 char pop(struct Pilha *p) {
-    if(vazia(p)) {
-        printf("\nPilha vazia, acrescente itens para poder desempilhar.\n");
-        return '\0';
-    } else {
-        char item = p->itens[p->topo];
-        p->topo--;
-        return item;
-    }
+      ...
 }
 
 char topo(struct Pilha *p) {
-    if(vazia(p)) {
-        return '\0';
-    } else {
-        return p->itens[p->topo];
-    }
+     ...
 }
 
 void limpar(struct Pilha *p) {
-    p->topo = -1; 
+     ...
 }
 
 int main() {
@@ -67,7 +49,7 @@ int main() {
 
         switch (opcao) {
             case 1: {
-                char palavra[10];
+                char palavra[MAX_SIZE];
                 printf("\nDigite a palavra a ser adicionada: ");
                 scanf("%s", palavra);
                 for (int i = 0; i < strlen(palavra); i++) {
