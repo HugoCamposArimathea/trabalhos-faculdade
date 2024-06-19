@@ -17,19 +17,38 @@ int vazia(struct Pilha *p) {
 }
 
 void push(struct Pilha *p, char item) {
-     ...
+    if (p->topo == MAX_SIZE)
+    {
+        printf("\nPilha cheia!\n");
+    }
+    p->topo++;
+    p->itens[p->topo] = item;
 }
 
 char pop(struct Pilha *p) {
-      ...
-}
-
-char topo(struct Pilha *p) {
-     ...
+    char reserv = p->itens[p->topo];
+    p->topo--;
+    return reserv;    
 }
 
 void limpar(struct Pilha *p) {
-     ...
+    p->topo = -1;
+}
+
+char topo(struct Pilha *p) {
+    if (vazia(p))
+    {
+        return '\0';
+    }
+    for (int i=0; i<p->itens; i++)
+    {
+        while (p->itens[p->topo] != '\0')
+        {
+            
+        }
+        
+    }
+    
 }
 
 int main() {
