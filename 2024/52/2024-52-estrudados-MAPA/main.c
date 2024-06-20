@@ -28,7 +28,7 @@ void push(struct Pilha *p, char item) {
 char pop(struct Pilha *p) {
     char reserv = p->itens[p->topo];
     p->topo--;
-    return reserv;    
+    return reserv;
 }
 
 void limpar(struct Pilha *p) {
@@ -40,14 +40,12 @@ char topo(struct Pilha *p) {
     {
         return '\0';
     }
-    for (int i=0; i<p->itens; i++)
-    {
-        while (p->itens[p->topo] != '\0')
-        {
-            
-        }
-        
+    
+    printf("\nElemento no topo da pilha: ");
+    for (int i = p->topo; i >= 0; i--) {
+        printf("%c", p->itens[i]);
     }
+    printf("\n");
     
 }
 
@@ -71,7 +69,7 @@ int main() {
                 char palavra[MAX_SIZE];
                 printf("\nDigite a palavra a ser adicionada: ");
                 scanf("%s", palavra);
-                for (int i = 0; i < strlen(palavra); i++) {
+                for (int i = strlen(palavra); i>=0; i--) {
                     push(&p, palavra[i]);
                 }
                 printf("\nPalavra '%s' adicionada à pilha.\n", palavra);
@@ -100,8 +98,6 @@ int main() {
                 char top = topo(&p);
                 if (top == '\0') {
                     printf("\nPilha vazia. Nenhum elemento para mostrar.\n");
-                } else {
-                    printf("\nElemento no topo da pilha: %c\n", top);
                 }
                 break;
             }
