@@ -68,9 +68,9 @@ int main() {
             case 1: {
                 char palavra[MAX_SIZE];
                 printf("\nDigite a palavra a ser adicionada: ");
-                scanf("%s", palavra);
+                fgets(palavra, MAX_SIZE, stdin);
                 for (int i = strlen(palavra); i>=0; i--) {
-                    push(&p, palavra[i]);
+                    push(&p, palavra[i]);                    
                 }
                 printf("\nPalavra '%s' adicionada à pilha.\n", palavra);
                 break;
