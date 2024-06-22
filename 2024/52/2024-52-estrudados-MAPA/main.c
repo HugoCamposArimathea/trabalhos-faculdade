@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <locale.h>
 
 #define MAX_SIZE 100
 
@@ -23,9 +24,14 @@ void push(struct Pilha *p, char item) {
     }
     p->topo++;
     p->itens[p->topo] = item;
+    
 }
 
+
 char pop(struct Pilha *p) {
+    if(vazia(p)){
+        printf("\nPilha vazia, nada para desempilhar!\n");
+    }
     char reserv = p->itens[p->topo];
     p->topo--;
     return reserv;
@@ -40,7 +46,6 @@ char topo(struct Pilha *p) {
     {
         return '\0';
     }
-    
     printf("\nElemento no topo da pilha: ");
     for (int i = p->topo; i >= 0; i--) {
         printf("%c", p->itens[i]);
@@ -50,6 +55,8 @@ char topo(struct Pilha *p) {
 }
 
 int main() {
+    setlocale(LC_ALL, "Portuguese");
+
     struct Pilha p;
     inicializar(&p);
 
@@ -63,13 +70,15 @@ int main() {
         int opcao;
         printf("\nEscolha uma opção: ");
         scanf("%d", &opcao);
+        fflush(stdin);
 
         switch (opcao) {
             case 1: {
                 char palavra[MAX_SIZE];
                 printf("\nDigite a palavra a ser adicionada: ");
-                fgets(palavra, MAX_SIZE, stdin);
-                for (int i = strlen(palavra); i>=0; i--) {
+                scanf("%s", palavra);
+                fflush(stdin);
+                for (int i = 0; i < strlen(palavra); i++) {
                     push(&p, palavra[i]);                    
                 }
                 printf("\nPalavra '%s' adicionada à pilha.\n", palavra);
@@ -79,7 +88,7 @@ int main() {
                 char palavra[MAX_SIZE];
                 int indice = 0;
                 while (!vazia(&p)) {
-                    palavra[indice++] = pop(&p);
+                     palavra[indice++] = pop(&p);
                 }
                 palavra[indice] = '\0';
                 if (indice>0) {
